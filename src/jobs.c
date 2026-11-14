@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 #include <wchar.h>
 
 #define READY 0 
@@ -287,6 +288,74 @@ while(completed < jobCount){
 
 }
 
+
+void priorityScheduling(void) {
+    if (jobCount == 0) {
+        printf("No jobs to schedule\n");
+        return;
+    }
+
+    resetJobs();
+
+    int clock = 0;
+    int completed = 0;
+
+    while (completed < jobCount) {
+        int selected = -1;
+
+        for (int i = 0; i < jobCount; i++) {
+            if (jobs[i].arrival > clock ||
+                jobs[i].status == COMPLETED) {
+                continue;
+            }
+
+            if (selected == -1) {
+                selected = i;
+                continue;
+            }
+
+            if (jobs[i].priority < jobs[selected].priority) {
+                selected = i;
+            }
+
+            else if (jobs[i].priority == jobs[selected].priority) {
+                if (jobs[i].arrival < jobs[selected].arrival ||
+                    (jobs[i].arrival == jobs[selected].arrival &&
+                     jobs[i].id < jobs[selected].id)) {
+                    selected = i;
+                }
+            }
+        }
+
+        if (selected == -1) {
+            int nextArrival = -1;
+
+            for (int i = 0; i < jobCount; i++) {
+                if (jobs[i].status == COMPLETED)
+                    continue;
+
+                if (nextArrival == -1 ||
+                    jobs[i].arrival < nextArrival) {
+                    nextArrival = jobs[i].arrival;
+                }
+            }
+
+            if (nextArrival == -1)
+                break;
+
+            clock = nextArrival;
+            continue;
+        }
+        execute(&clock, jobs[selected].remaining, selected);
+
+        if (jobs[selected].status == COMPLETED) {
+            completed++;
+        }
+    }
+
+    calculateTime();
+}
+
 int main(){
 
   int clock = 0;
@@ -300,5 +369,7 @@ int main(){
   fcfs();
   displayJobs();
   roundRobin(2);
+  displayJobs();
+  priorityScheduling();
   displayJobs();
 }
