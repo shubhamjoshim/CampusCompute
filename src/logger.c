@@ -10,10 +10,10 @@
 
 char messages[Q_SIZE][MESSAGE_SIZE];
 
-int head = 0;
-int tail = 0;
-int count = 0;
-int producerDone = 0;
+static int head = 0;
+static int tail = 0;
+static int count = 0;
+static int producerDone = 0;
 
 pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
 pthread_cond_t notFull = PTHREAD_COND_INITIALIZER;
