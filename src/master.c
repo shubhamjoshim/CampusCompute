@@ -48,6 +48,7 @@ int main(void) {
             printf("   a.add job \n");
             printf("   b.display jobs \n");
             printf("   c.reset jobs \n ");
+            printf("   0.exit \n");
             scanf(" %c",&option);
             
             
@@ -69,6 +70,7 @@ int main(void) {
                 resetJobs();
                 printf("jobs have been reset");
                 break;
+                case '0':break;
                 default: 
                 printf("invalid input , enter a valid input");
                 break;
@@ -117,6 +119,7 @@ int main(void) {
                 displayJobs();
                 break;
 
+
             default:
                 printf("Invalid option, enter a, b, c or x.\n");
                 break;
@@ -137,6 +140,7 @@ int main(void) {
             printf("---BANKER'S ALGORITHM---\n");
             printf("1. success case\n");
             printf("2. failure case\n");
+            printf("0. exit \n");
             if (scanf("%d", &flag) != 1 || flag == 0) {
             printf("invalid input\n");
             break;
@@ -149,6 +153,7 @@ int main(void) {
                 case 2:
                 banker_algo_deadlock();
                 break;
+                case 0: break;
             }
             
 
@@ -157,6 +162,7 @@ int main(void) {
             int n;
             printf("1. success case\n");
             printf("2. failure case\n");
+            printf("0.exit \n);
 
             if (scanf("%d", &n) != 1 || n == 0) {
             printf("invalid input\n");
@@ -168,6 +174,7 @@ int main(void) {
                 case 2:
                 failure();
                 break;
+                 case 0: break;
              }
 
              case 7:
