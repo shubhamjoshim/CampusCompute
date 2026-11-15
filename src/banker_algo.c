@@ -46,7 +46,6 @@ for(int i=0;i<5;i++){
 }
 
 int finish[5] = {0};
-int safe_seq[5];
 int flag=0;
 
 for(int rep=0;rep<5;rep++){
@@ -60,7 +59,6 @@ for(int i=0;i<5;i++){
             printf("PROCESS ORDER: \n");
             flag++;
         }
-        safe_seq[check] = i;
         finish[i]=1;
         if(check<5){
             printf("P%d -> ",i+1);
@@ -126,7 +124,6 @@ for(int i=0;i<5;i++){
 }
 
 int finish[5] = {0};
-int safe_seq[5];
 int flag=0;
 
 for(int rep=0;rep<5;rep++){
@@ -140,7 +137,6 @@ for(int i=0;i<5;i++){
             printf("PROCESS ORDER: \n");
             flag++;
         }
-        safe_seq[check] = i;
         finish[i]=1;
         if(check<5){
             printf("P%d -> ",i+1);
