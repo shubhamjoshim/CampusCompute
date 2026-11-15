@@ -5,8 +5,7 @@
 
 int failure(){
 int pid=fork();
-int n;
-int status;
+
 
 if(pid<0){
     printf("fork failed");
@@ -42,8 +41,6 @@ if (WIFEXITED(status)) {
 
 int success(){
 int pid=fork();
-int n;
-int status;
 
 if(pid<0){
     printf("fork failed");
@@ -77,7 +74,7 @@ if (WIFEXITED(status)) {
     }
 }
 
-int main(int argc,char*argv[] ){
+int main(void){
     int n;
     printf("|-----FR6-----| \n");
     printf("choose which case you want to run: \n");
@@ -95,6 +92,7 @@ int main(int argc,char*argv[] ){
             printf("give a valid input please. terminating... \n");
             return 1;
     }
+    return 0;
 }
 
 
