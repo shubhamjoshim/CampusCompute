@@ -4,11 +4,11 @@ CFLAGS = -Wall -Wextra -g -pthread -D_DEFAULT_SOURCE \
          -Wno-unused-but-set-variable \
          -Wno-unused-parameter \
          -Wno-return-type
-LDFLAGS = -pthread -lrt
+LDFLAGS = -pthread 
 
 TARGET = campus_compute
 
-OBJS = master.o \
+OBJS = improvedMaster.o \
        jobs.o \
        logger.o \
        ipc.o \
@@ -21,8 +21,8 @@ all: $(TARGET)
 $(TARGET): $(OBJS)
 	$(CC) $(OBJS) -o $(TARGET) $(LDFLAGS)
 
-master.o: master.c
-	$(CC) $(CFLAGS) -c master.c -o master.o
+improvedMaster.o: improvedMaster.c
+	$(CC) $(CFLAGS) -c improvedMaster.c -o improvedMaster.o
 
 %.o: %.c
 	$(CC) $(CFLAGS) -Dmain=$*_main -c $< -o $@
