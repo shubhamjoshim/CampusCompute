@@ -358,7 +358,7 @@ void priorityScheduling(void) {
 
 int main(){
 
-  int clock = 0;
+  
 
   addJob(1,1,1,1);
   addJob(2,2,3,5);
@@ -372,4 +372,5 @@ int main(){
   displayJobs();
   priorityScheduling();
   displayJobs();
+  return 0;
 }
