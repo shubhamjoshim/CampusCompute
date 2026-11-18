@@ -2,3 +2,5 @@ a.out
 Campus.log
 *.log
 *.o
+output/
+*.zip
